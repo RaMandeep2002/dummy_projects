@@ -11,7 +11,18 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(500).json({ err: "something went working!" });
 });
 
-
+app.get("/", (req: Request, res: Response) => {
+    try {
+        res.status(200).json({
+            success: true,
+            message: "Welcome to the Salmon arm taxi API",
+        });
+    } catch (error) {
+        // next(error);
+        console.log("error ==> ", error);
+    }
+}
+);
 app.listen(PORT, () => {
     console.log(`Server is listening on http://${HOST}:${PORT}`);
 });
